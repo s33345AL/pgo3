@@ -6,7 +6,7 @@ public class StudentGroup {
     public List<Student> students = new ArrayList<>();
 
     public void addStudent(Student student) {
-        if (students.size() > 1) {
+        if (students.size() > 15) {
             throw new IllegalStateException("Grupa nie może mieć więcej niż 15 studentów");
         }
             if (students.contains(student)) {
