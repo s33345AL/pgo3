@@ -4,22 +4,33 @@ import java.util.List;
 public class Student {
     public String fname;
     public String lname;
-    public int indexNumber;
+    public String indexNumber;
     public String email;
     public String address;
-    public double grades;
-    public Student(String fname, String lname, int indexNumber, String email, String address, double grades) {
+    public ArrayList<Double> grades;
+
+    public Student(String fname, String lname, String indexNumber, String email, String address, double grades) {
         this.fname = fname;
         this.lname = lname;
         this.indexNumber = indexNumber;
         this.email = email;
         this.address = address;
-        this.grades = grades;
+        this.grades = new ArrayList<>();
     }
-    public void AverageGrades(double grades){
-        double AverageGrades =(this.grades * 2) / 2;
+
+    public void addGrade(double grades) {
+        this.grades.add(grades);
     }
-    public void wyswietlInformacje() {
-        System.out.println();
+
+    public double getAverageGrades() {
+    double sum = 0;
+    for (double grade : grades) {
+        sum += grade;
+    }
+    if(grades.size() == 0 || grades.size() > 20){
+        throw new IllegalArgumentException("Niedozwolona ilość ocen");
+    }
+    double srednia = (sum / grades.size());
+        return Math.round(srednia * 2) / 2.0;
     }
 }
